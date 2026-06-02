@@ -7,16 +7,23 @@ A backend API for capturing, storing, and streaming wrist motion data from dual 
 ## Architecture
 
 ```
-ESP32 (BLE) ──► Client / Test ──► FastAPI Backend ──► PostgreSQL
-                                          │
-                                     Kafka Producer
-                                          │
-                                   imu.readings topic
+ESP32 (BLE notify)
+       │
+  bleak bridge          ← bridge/main.py
+  (Python, async)
+       │ WebSocket
+       ▼
+  FastAPI Backend ──► PostgreSQL
+       │
+  Kafka Producer
+       │
+  imu.readings topic
 ```
 
-The API supports two ingestion modes:
-- **Batch upload** — a completed session's readings are uploaded as a JSON payload after recording
-- **Live stream** — a WebSocket connection streams individual readings in real time as they arrive from the sensor
+The system has three components:
+- **ESP32 firmware** (`arduino/`) — reads dual BNO055 IMUs at 100Hz and advertises data via BLE GATT notify
+- **BLE bridge** (`bridge/`) — Python process that connects to the ESP32 as a GATT client and forwards readings to the API over WebSocket
+- **FastAPI backend** (`backend/`) — receives, stores, and serves session data; also accepts batch uploads for offline recordings
 
 ## Tech Stack
 
