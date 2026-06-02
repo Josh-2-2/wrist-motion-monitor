@@ -29,7 +29,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: sqlite+aiosqlite:///:memory:
+          DATABASE_URL: "sqlite+aiosqlite:///:memory:"
           SECRET_KEY: ci-test-secret-key-not-used-in-production
           KAFKA_BOOTSTRAP_SERVERS: localhost:9092
           KAFKA_TOPIC_IMU: imu.readings
