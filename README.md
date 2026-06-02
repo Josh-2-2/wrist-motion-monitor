@@ -1,5 +1,7 @@
 # Wrist Motion Monitor — API
 
+![CI](https://github.com/Josh-2-2/wrist-motion-monitor/actions/workflows/ci.yml/badge.svg)
+
 A backend API for capturing, storing, and streaming wrist motion data from dual BNO055 IMU sensors worn during athletic activity. Originally built as a senior design project at Mississippi State University, this version is a full backend rewrite using modern Python tooling.
 
 ## Architecture
