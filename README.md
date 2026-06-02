@@ -55,35 +55,9 @@ docker compose run --rm api python -m pytest tests/ -v
 
 ## API Reference
 
-### Auth
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/auth/register` | Create a new user account |
-| `POST` | `/auth/login` | Obtain a JWT access token |
+[**View full interactive API spec →**](https://editor.swagger.io/?url=https://raw.githubusercontent.com/Josh-2-2/wrist-motion-monitor/main/backend/openapi.json)
 
-### Athletes
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/athletes/` | Create an athlete profile |
-| `GET` | `/athletes/` | List all athletes |
-| `GET` | `/athletes/{id}` | Get a specific athlete |
-| `PATCH` | `/athletes/{id}` | Update athlete details |
-| `DELETE` | `/athletes/{id}` | Delete an athlete |
-
-### Sessions & IMU Data
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/sessions/` | Create a new recording session |
-| `GET` | `/sessions/` | List all sessions |
-| `GET` | `/sessions/{id}` | Get session details |
-| `POST` | `/sessions/{id}/upload` | Batch upload IMU readings |
-| `GET` | `/sessions/{id}/readings` | Retrieve all readings for a session |
-| `WS` | `/sessions/{id}/stream` | Live-stream readings via WebSocket |
-
-### Health
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/health` | Service health check |
+The spec is generated directly from the FastAPI app and committed to the repo at [`backend/openapi.json`](backend/openapi.json).
 
 ## Data Model
 
